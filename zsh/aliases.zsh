@@ -1,3 +1,7 @@
-alias reload!='. ~/.zshrc'
+alias top="htop"
 
-alias cls='clear' # Good 'ol Clear Screen command
+alias tmk="tmux kill-session -t"
+alias tma="tmux attach-session -t"
+alias tml="tmux ls"
+
+alias vim="nvim"
