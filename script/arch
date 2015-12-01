@@ -42,3 +42,5 @@ yaourt --noconfirm spotify
 yaourt --noconfirm synergy
 yaourt --noconfirm update-pacman-mirrorlist
 yaourt --noconfirm vlc
+yaourt --noconfirm pkgfile
+sudo pkgfile --update
