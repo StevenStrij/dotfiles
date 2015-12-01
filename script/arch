@@ -1,0 +1,44 @@
+#!/bin/bash
+
+sudo pacman -S vim
+sudo pacman -S tmux
+sudo pacman -S curl
+
+# Installing yaourt for future
+cd "/tmp/"
+curl -L -O "https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz"
+tar -xvf yaourt.tar.gz
+cd "yaourt"
+makepkg -sri
+
+yaourt --noconfirm adobe-source-sans-pro-fonts
+yaourt --noconfirm alsa-utils
+yaourt --noconfirm alsaplayer
+yaourt --noconfirm apulse
+yaourt --noconfirm archey3
+yaourt --noconfirm cmus
+yaourt --noconfirm deluge
+yaourt --noconfirm gdb
+yaourt --noconfirm google-chrome
+yaourt --noconfirm gpicview
+yaourt --noconfirm htop
+yaourt --noconfirm i3-wm
+yaourt --noconfirm i3-blocks
+yaourt --noconfirm insync
+yaourt --noconfirm iputils
+yaourt --noconfirm j4-demnu-desktop
+yaourt --noconfirm keychain
+yaourt --noconfirm mpc
+yaourt --noconfirm ncmpcpp
+yaourt --noconfirm neovim
+yaourt --noconfirm nitrogen
+yaourt --noconfirm openssh
+yaourt --noconfirm p7zip
+yaourt --noconfirm pamixer
+yaourt --noconfirm ranger
+yaourt --noconfirm shutter
+yaourt --noconfirm skype
+yaourt --noconfirm spotify
+yaourt --noconfirm synergy
+yaourt --noconfirm update-pacman-mirrorlist
+yaourt --noconfirm vlc
