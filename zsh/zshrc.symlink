@@ -53,7 +53,6 @@ plugins=(git zsh-syntax-highlighting ssh-agent)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-eval $(keychain --eval --quiet)
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -81,12 +80,11 @@ eval $(keychain --eval --quiet)
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
-#tmux
-#archey
-
+# SSH Key stuff
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+eval $(keychain --eval --quiet id_rsa ~/.ssh/id_rsa)
 
-
+# Getting dircolors
 if [ -f "$HOME/.dircolors" ]
 then
   eval $(dircolors -b $HOME/.dircolors)
