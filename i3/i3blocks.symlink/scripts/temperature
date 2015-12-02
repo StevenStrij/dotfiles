@@ -43,10 +43,14 @@ GetOptions("help|h" => \&help,
            "c=i"    => \$t_crit,
            "chip=s" => \$chip);
 
+my $flag = 0;
 # Get chip temperature
-open (SENSORS, "sensors -u $chip |") or die;
+open (SENSORS, "sensors -u |") or die;
 while (<SENSORS>) {
-    if (/^\s+temp1_input:\s+[\+]*([\-]*\d+\.\d)/) {
+    if (/^Physical id 0:/) {
+        $flag = 1;
+    }
+    if (/^\s+temp1_input:\s+[\+]*([\-]*\d+\.\d)/ && $flag == 1) {
         $temperature = $1;
         last;
     }

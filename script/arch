@@ -26,9 +26,11 @@ yaourt --noconfirm i3-wm
 yaourt --noconfirm i3-blocks
 yaourt --noconfirm insync
 yaourt --noconfirm iputils
-yaourt --noconfirm j4-demnu-desktop
+yaourt --noconfirm j4-dmenu-desktop
 yaourt --noconfirm keychain
 yaourt --noconfirm mpc
+yaourt --noconfirm mopidy
+yaourt --noconfirm mopidy-spotify
 yaourt --noconfirm ncmpcpp
 yaourt --noconfirm neovim
 yaourt --noconfirm nitrogen
@@ -42,5 +44,12 @@ yaourt --noconfirm spotify
 yaourt --noconfirm synergy
 yaourt --noconfirm update-pacman-mirrorlist
 yaourt --noconfirm vlc
+yaourt --noconfirm ttf-font-awesome
+yaourt --noconfirm ttf-font-icons
+yaourt --noconfirm ttf-inconsolata
+yaourt --noconfirm ttf-font-tahoma
+yaourt --noconfirm powerline-fonts-git
+
+
 yaourt --noconfirm pkgfile
 sudo pkgfile --update
