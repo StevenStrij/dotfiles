@@ -28,7 +28,6 @@ yaourt --noconfirm insync
 yaourt --noconfirm iputils
 yaourt --noconfirm j4-dmenu-desktop
 yaourt --noconfirm keychain
-yaourt --noconfirm mpc
 yaourt --noconfirm mopidy
 yaourt --noconfirm mopidy-spotify
 yaourt --noconfirm ncmpcpp
@@ -47,9 +46,12 @@ yaourt --noconfirm vlc
 yaourt --noconfirm ttf-font-awesome
 yaourt --noconfirm ttf-font-icons
 yaourt --noconfirm ttf-inconsolata
-yaourt --noconfirm ttf-font-tahoma
 yaourt --noconfirm powerline-fonts-git
 
-
+# pkgfile getting stuff
 yaourt --noconfirm pkgfile
 sudo pkgfile --update
+
+# This is for nvim to get same plugins as vim
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
