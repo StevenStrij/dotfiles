@@ -103,10 +103,10 @@ instance=enp6s0
 interval=10
 color=#8abeb7
 
-#[wifi_ssid]
-#label=
-#instance=wlp1s0
-#interval=10
+[wifi_ssid]
+label=
+instance=wlp3s0
+interval=10
 
 #[bandwidth]
 #instance=wlp1s0
@@ -119,8 +119,8 @@ instance=Master
 interval=once
 signal=10
 
-#[battery]
-#interval=10
+[battery]
+interval=10
 
 [date]
 interval=1
