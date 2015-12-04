@@ -47,6 +47,7 @@ yaourt --noconfirm ttf-font-awesome
 yaourt --noconfirm ttf-font-icons
 yaourt --noconfirm ttf-inconsolata
 yaourt --noconfirm powerline-fonts-git
+yaourt --noconfirm adobe-source-han-sans-jp-fonts
 
 # pkgfile getting stuff
 yaourt --noconfirm pkgfile
