@@ -32,6 +32,7 @@ yaourt --noconfirm mopidy
 yaourt --noconfirm mopidy-spotify
 yaourt --noconfirm ncmpcpp
 yaourt --noconfirm neovim
+sudo pacman -S python2-neovim python-neovim
 yaourt --noconfirm nitrogen
 yaourt --noconfirm openssh
 yaourt --noconfirm p7zip
@@ -48,6 +49,7 @@ yaourt --noconfirm ttf-font-icons
 yaourt --noconfirm ttf-inconsolata
 yaourt --noconfirm powerline-fonts-git
 yaourt --noconfirm adobe-source-han-sans-jp-fonts
+yaourt --noconfirm rsync
 
 # pkgfile getting stuff
 yaourt --noconfirm pkgfile
