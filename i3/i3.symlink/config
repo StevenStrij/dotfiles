@@ -167,6 +167,8 @@ bindsym XF86AudioPrev exec playerctl previous
 # Backlight Controls #
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
+bindsym XF86KbdBrightnessUp exec --no-startup-id kbdlight up 10
+bindsym XF86KbdBrightnessDown exec --no-startup-id kbdlight down 10
 
 
 bindsym $mod+Tab move workspace to output right
