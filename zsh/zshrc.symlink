@@ -84,6 +84,10 @@ source $ZSH/oh-my-zsh.sh
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 eval $(keychain --eval --quiet id_rsa ~/.ssh/id_rsa)
 
+# Go Exports
+export GOPATH=$HOME/golang
+export PATH=$PATH:$GOPATH/bin
+
 # Getting dircolors
 if [ -f "$HOME/.dircolors" ]
 then
