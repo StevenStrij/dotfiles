@@ -39,14 +39,14 @@ $percent = $2;
 if ($status eq 'Charging') {
     $full_text = ' ';
 } else {
-    if ($percent < 10) {
+    if ($percent < 15) {
         $full_text = " "
-    } elsif ($percent < 20) {
-        $full_text = " "
-    } elsif ($percent < 40) {
+    } elsif ($percent < 30) {
         $full_text = " "
     } elsif ($percent < 60) {
         $full_text = " "
+    } elsif ($percent < 80) {
+        $full_text = " "
     } else {
         $full_text = " "
     }

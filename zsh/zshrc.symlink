@@ -54,6 +54,7 @@ plugins=(git zsh-syntax-highlighting ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -81,7 +82,6 @@ source $ZSH/oh-my-zsh.sh
 #
 
 # SSH Key stuff
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 eval $(keychain --eval --quiet id_rsa ~/.ssh/id_rsa)
 
 # Go Exports
