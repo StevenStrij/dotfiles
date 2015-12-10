@@ -7,49 +7,37 @@ call vundle#begin()
 " required!
 Plugin 'gmarik/vundle'
 
-" My Plugins here:
-"
-" original repos on github
+" Syntax checking/autocomplete plugins
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
-Plugin 'majutsushi/tagbar'
-" Plugin 'tpope/vim-abolish'
 Plugin 'klen/python-mode'
-
-Plugin 'vim-scripts/hlint'
-
-Plugin 'groenewege/vim-less'
 Plugin 'ap/vim-css-color'
-Plugin 'jelera/vim-javascript-syntax'
 
-Plugin 'kien/ctrlp.vim'
+" Class outline viewer
+Plugin 'majutsushi/tagbar'
+
+
+" File finder
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" Git wrapper in vim
 Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'chriskempson/base16-vim'
-" Plugin 'kien/rainbow_parentheses.vim'          Colourful things for
-"brackets, doesnt work well with solarized
+
+" Movement improvements in vim
+Plugin 'easymotion/vim-easymotion'
+
+" Solarized colour theme
 Plugin 'altercation/vim-colors-solarized'
 
+" Super neato looking bar at the bottom
 Plugin 'bling/vim-airline'
 
-" Plugin 'vim-scripts/promela.vim'
-
-" vim-scripts
-Plugin 'L9'
-Plugin 'TaskList.vim'
-Plugin 'Latex-Text-Formatter'
+" Go Plugin
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
-" Pathogen load
-"
-" call pathogen#infect()
-" call pathogen#helptags()
-
 filetype plugin indent on
-"let base16colorspace=256
-"colorscheme base16-atelierdune
-"set background=light" Dark theme!
 
 set background=dark
 let g:solarized_termtrans = 1
