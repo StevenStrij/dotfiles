@@ -48,10 +48,10 @@ colorscheme solarized
 syntax enable
 set modeline
 set smartindent
-set tabstop=4                                 " Tab key results in 2 spaces
+set tabstop=4                                 " Tab key results in 4 spaces
 set shiftwidth=4                              " The num of spaces for indenting
 set backspace=indent,eol,start
-set softtabstop=4                             " Tab key results in 2 spaces
+set softtabstop=4                             " Tab key results in 4 spaces
 set expandtab                                 " Expand tabs to spaces
 set clipboard+=unnamed
 set clipboard+=unnamedplus
