@@ -39,7 +39,7 @@ URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,matcher
+URxvt.perl-ext-common:      default,matcher,clipboard
 URxvt.matcher.button:       1
 URxvt.urlLauncher:          google-chrome-stable
 
@@ -47,6 +47,11 @@ URxvt.urlLauncher:          google-chrome-stable
 URxvt.cursorBlink:          false
 URxvt.cursorColor:          #657b83
 URxvt.cursorUnderline:      false
+
+! Copy+Paste
+URxvt.iso14755: false
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 
 ! Pointer
 URxvt.pointerBlank:         true
