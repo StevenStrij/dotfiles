@@ -52,6 +52,7 @@ yaourt --noconfirm adobe-source-han-sans-jp-fonts
 yaourt --noconfirm rsync
 yaourt --noconfirm mopidy-youtube
 yaourt --noconfirm mopidy-spotify-tunigo
+yaourt --noconfirm meld
 
 # pkgfile getting stuff
 yaourt --noconfirm pkgfile
