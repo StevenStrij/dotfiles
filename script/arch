@@ -22,7 +22,7 @@ yaourt --noconfirm gdb
 yaourt --noconfirm google-chrome
 yaourt --noconfirm gpicview
 yaourt --noconfirm htop
-yaourt --noconfirm i3-wm
+yaourt --noconfirm i3-gaps
 yaourt --noconfirm i3-blocks
 yaourt --noconfirm insync
 yaourt --noconfirm iputils
@@ -49,9 +49,11 @@ yaourt --noconfirm ttf-font-icons
 yaourt --noconfirm ttf-inconsolata
 yaourt --noconfirm powerline-fonts-git
 yaourt --noconfirm adobe-source-han-sans-jp-fonts
+yaourt --noconfirm otf-source-han-code-jp
 yaourt --noconfirm rsync
 yaourt --noconfirm mopidy-youtube
 yaourt --noconfirm mopidy-spotify-tunigo
+yaourt --noconfirm meld
 
 # pkgfile getting stuff
 yaourt --noconfirm pkgfile
