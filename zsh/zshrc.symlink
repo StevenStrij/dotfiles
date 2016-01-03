@@ -85,7 +85,7 @@ source $ZSH/oh-my-zsh.sh
 eval $(keychain --eval --quiet id_rsa ~/.ssh/id_rsa)
 
 # Go Exports
-export GOPATH=$HOME/golang
+export GOPATH=$HOME/.golang
 export PATH=$PATH:$GOPATH/bin
 
 # Getting dircolors

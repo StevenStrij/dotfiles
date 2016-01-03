@@ -108,10 +108,10 @@ label=
 instance=wlp3s0
 interval=10
 
-#[bandwidth]
-#instance=wlp1s0
-#interval=5
-#color=#AE95C7
+[bandwidth]
+instance=enp6s0
+interval=5
+color=#AE95C7
 
 [volume]
 label=
