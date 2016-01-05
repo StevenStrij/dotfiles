@@ -2,11 +2,11 @@
 ! Xft settings
 !-------------------------------------------------------------------------------
 
-!Xft.dpi:                    180
-!Xft.antialias:              false
+Xft.dpi:                    96
+Xft.antialias:              false
 Xft.rgba:                   rgb
-!Xft.hinting:                true
-!Xft.hintstyle:              hintslight
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
 
 !-------------------------------------------------------------------------------
 ! URxvt settings
@@ -28,8 +28,8 @@ URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           false
-URxvt*font: xft:Inconsolata for Powerline:pixelsize=14
-URxvt*boldFont: xft:Inconsolata for Powerline:pixelsize=14
+URxvt*font: xft:Inconsolata for Powerline:pixelsize=22
+URxvt*boldFont: xft:Inconsolata for Powerline:pixelsize=22
 
 ! Fix font space
 URxvt*letterSpace: -1
