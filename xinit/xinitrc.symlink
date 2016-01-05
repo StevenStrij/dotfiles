@@ -23,19 +23,19 @@ xrdb -merge ~/.Xresources
 #export GNOME_KEYRING_CONTROL
 #export GNOME_KEYRING_PID
 
-upower -e
+# Laptop/Power Savings
+# upower -e
+# Screen Powersave
+# xset +dpms
+# xset dpms 0 0 300
 
-# screen powersave
-xset +dpms
-xset dpms 0 0 300
-
+# Starting music daemon
 systemctl --user start mopidy.service
 sudo systemctl start mbpfan.service
 
-# source ~/.zshrc
-# exec awesome
+# Desktop Screen Setup
+xrandr --output DVI-I-2 --mode 1920x1080 --right-of DVI-I-3
+xrandr --output DVI-I-3 --mode 1680x1050 --left-of DVI-I-2
+
+# Starting i3
 exec i3
-# exec gnome-session
-# exec startkde
-# exec startxfce4
-# ...or the Window Manager of your choice

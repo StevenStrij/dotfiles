@@ -55,6 +55,9 @@ yaourt --noconfirm mopidy-youtube
 yaourt --noconfirm mopidy-spotify-tunigo
 yaourt --noconfirm meld
 yaourt --noconfirm ycm-generator
+yaourt --noconfirm highlight
+yaourt --noconfirm poppler
+yaourt --noconfirm mediainfo
 
 # pkgfile getting stuff
 yaourt --noconfirm pkgfile
