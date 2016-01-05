@@ -43,25 +43,19 @@ set background=dark
 let g:solarized_termtrans = 1
 colorscheme solarized
 
-" colorscheme base16-brewer
-
 syntax enable
 set modeline
 set smartindent
-set tabstop=4                                 " Tab key results in 4 spaces
-set shiftwidth=4                              " The num of spaces for indenting
+set tabstop=2                                 " Tab key results in 4 spaces
+set shiftwidth=2                              " The num of spaces for indenting
 set backspace=indent,eol,start
-set softtabstop=4                             " Tab key results in 4 spaces
+set softtabstop=2                             " Tab key results in 4 spaces
 set expandtab                                 " Expand tabs to spaces
 set clipboard+=unnamed
 set clipboard+=unnamedplus
 set go+=a
 set number                                    " Enable line numbers
 set laststatus=2                              " Always show statusline
-"set foldenable
-"set foldmethod=syntax                         " Markers are used to specify folds
-"set foldopen=block,hor,percent,quickfix,tag
-"set foldlevel=1
 set nofoldenable
 set hlsearch                                  " Highlight all search hits
 set spell                                     " Enable spell checking
@@ -95,33 +89,13 @@ endif
 
 set t_Co=256
 
-
 let g:airline_powerline_fonts = 1
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_extra_conf_globlist = ['*']
-"let g:ycm_autoclose_preview_window_after_completion = 1
-"let g:ycm_autoclose_preview_window_after_completion = 1
-
-" Make syntastaic work nicer
-"let g:syntastic_enable_balloons = 1
-
-" let g:pymode = 0
-"let g:pymode_lint_ignore = 'C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511'
-"let g:pymode_lint_ignore = 'E111,E114,E121,E128'
-"let g:pymode_rope_completion = 0
-
-"let g:syntastic_python_checkers = ['pylint']
-" Don't whinge about c++11, you brat!
-"let g:syntastic_cpp_compiler_options = '-I${HOME}/openmpi/env/include -std=c++11'
-"let g:syntastic_auto_loc_list=1
 
 " Map f8 for Tagbar
 nmap <F8> :TagbarToggle<CR>
-
-" Fix :s
-" Currently doesn't work reliably
-"cnoreabbrev <expr> s/ ((getcmdtype() is# ':' && getcmdline() =~# 's/')?('Subvert/'):('s'))
 
 " Remap ctrl+arrows to move between window splits
 nmap <silent> <C-Up> :wincmd k<CR>
@@ -134,6 +108,9 @@ map <Space> \\w
 
 " Map enter to clear highlighted search hits
 nnoremap <CR> :nohlsearch<CR><CR>
+
+" Toggle paste mode with F3
+set pastetoggle=<F3>
 
 " QuickFix close function; :q should close a window *and* the accompanying
 " quickfix

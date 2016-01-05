@@ -30,9 +30,7 @@ xset +dpms
 xset dpms 0 0 300
 
 systemctl --user start mopidy.service
-
-xrandr --output DVI-I-2 --mode 1920x1080 --right-of DVI-3
-xrandr --output DVI-I-3 --mode 1920x1080 --right-of DVI-2
+sudo systemctl start mbpfan.service
 
 # source ~/.zshrc
 # exec awesome
