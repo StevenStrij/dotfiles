@@ -29,13 +29,5 @@ xrdb -merge ~/.Xresources
 # xset +dpms
 # xset dpms 0 0 300
 
-# Starting music daemon
-systemctl --user start mopidy.service
-sudo systemctl start mbpfan.service
-
-# Desktop Screen Setup
-xrandr --output DVI-I-2 --mode 1920x1080 --right-of DVI-I-3
-xrandr --output DVI-I-3 --mode 1680x1050 --left-of DVI-I-2
-
 # Starting i3
 exec i3

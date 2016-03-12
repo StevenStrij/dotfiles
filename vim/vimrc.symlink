@@ -16,7 +16,6 @@ Plugin 'ap/vim-css-color'
 " Class outline viewer
 Plugin 'majutsushi/tagbar'
 
-
 " File finder
 Plugin 'ctrlpvim/ctrlp.vim'
 
@@ -34,6 +33,19 @@ Plugin 'bling/vim-airline'
 
 " Go Plugin
 Plugin 'fatih/vim-go'
+
+" Code-grep
+Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
+
+" Surround, bracket functionality
+Plugin 'tpope/vim-surround'
+
+" Tmux Navigation
+Plugin 'christoomey/vim-tmux-navigator'
+
+" Comment lines of code
+Plugin 'tpope/vim-commentary'
 
 call vundle#end()
 

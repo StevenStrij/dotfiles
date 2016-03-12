@@ -5,7 +5,7 @@ sudo pacman -S tmux
 sudo pacman -S curl
 
 # Installing yaourt for future
-cd "/tmp/"
+cd "/home/steven/Downloads/"
 curl -L -O "https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz"
 tar -xvf yaourt.tar.gz
 cd "yaourt"
@@ -47,6 +47,7 @@ yaourt --noconfirm vlc
 yaourt --noconfirm ttf-font-awesome
 yaourt --noconfirm ttf-font-icons
 yaourt --noconfirm ttf-inconsolata
+yaourt --noconfirm ttf-dejavu
 yaourt --noconfirm powerline-fonts-git
 yaourt --noconfirm adobe-source-han-sans-jp-fonts
 yaourt --noconfirm otf-source-han-code-jp
