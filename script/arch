@@ -1,12 +1,19 @@
 #!/bin/bash
 
 sudo pacman -S vim
+sudo pacman -S emacs
 sudo pacman -S tmux
 sudo pacman -S curl
+sudo pacman -S python2-neovim python-neovim
 
 # Installing yaourt for future
-cd "/home/steven/Downloads/"
+cd "/tmp/"
 curl -L -O "https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz"
+curl -L -O "https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz"
+tar -xvf package-query.tar.gz
+cd "package-query"
+makepkg -sri
+cd ..
 tar -xvf yaourt.tar.gz
 cd "yaourt"
 makepkg -sri
@@ -16,11 +23,9 @@ yaourt --noconfirm alsa-utils
 yaourt --noconfirm alsaplayer
 yaourt --noconfirm apulse
 yaourt --noconfirm archey3
-yaourt --noconfirm cmus
 yaourt --noconfirm deluge
 yaourt --noconfirm gdb
-yaourt --noconfirm google-chrome
-yaourt --noconfirm gpicview
+yaourt --noconfirm google-chrome-dev
 yaourt --noconfirm htop
 yaourt --noconfirm i3-gaps
 yaourt --noconfirm i3-blocks
@@ -32,7 +37,6 @@ yaourt --noconfirm mopidy
 yaourt --noconfirm mopidy-spotify
 yaourt --noconfirm ncmpcpp
 yaourt --noconfirm neovim
-sudo pacman -S python2-neovim python-neovim
 yaourt --noconfirm nitrogen
 yaourt --noconfirm openssh
 yaourt --noconfirm p7zip
@@ -52,13 +56,14 @@ yaourt --noconfirm powerline-fonts-git
 yaourt --noconfirm adobe-source-han-sans-jp-fonts
 yaourt --noconfirm otf-source-han-code-jp
 yaourt --noconfirm rsync
-yaourt --noconfirm mopidy-youtube
-yaourt --noconfirm mopidy-spotify-tunigo
 yaourt --noconfirm meld
 yaourt --noconfirm ycm-generator
 yaourt --noconfirm highlight
 yaourt --noconfirm poppler
 yaourt --noconfirm mediainfo
+yaourt --noconfirm arandr
+yaourt --noconfirm xtitle
+
 
 # pkgfile getting stuff
 yaourt --noconfirm pkgfile
