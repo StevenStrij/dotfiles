@@ -12,6 +12,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'klen/python-mode'
 Plugin 'ap/vim-css-color'
+Plugin 'adimit/prolog.vim'
 
 " Class outline viewer
 Plugin 'majutsushi/tagbar'

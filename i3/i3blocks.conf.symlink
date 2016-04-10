@@ -6,19 +6,19 @@ markup=pango
 separator=false
 align=center
 
-[window]
-interval=1
-separator_block_width=5
-
-[focused]
-interval=1
-separator_block_width=1
-color=#87AFAF
-
-[close]
-interval=1
-min_width=1366 y=768
-align=left
+# [window]
+# interval=1
+# separator_block_width=5
+# 
+# [focused]
+# interval=1
+# separator_block_width=1
+# color=#87AFAF
+# 
+# [close]
+# interval=1
+# min_width=1366 y=768
+# align=left
 
 [mediaplayer]
 label=
