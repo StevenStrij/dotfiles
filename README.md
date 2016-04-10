@@ -5,6 +5,8 @@ Mostly taken from Rafib for vim, and Hollman for their bootstrap of dotfiles
 
 This is a fork of 'Hollman does dotfiles', removed OSX parts
 
+Should also note the migration from oh-my-zsh to zprezto from the original repo
+
 ## topical
 
 Everything's built around topic areas. If you're adding a new area to your
