@@ -67,11 +67,14 @@ set expandtab                                 " Expand tabs to spaces
 set clipboard+=unnamed
 set clipboard+=unnamedplus
 set go+=a
+set relativenumber                            " Line deltas
 set number                                    " Enable line numbers
 set laststatus=2                              " Always show statusline
 set nofoldenable
 set hlsearch                                  " Highlight all search hits
 set spell                                     " Enable spell checking
+
+"set cm=blowfish2                              "
 
 " Backup
 set noswapfile

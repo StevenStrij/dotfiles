@@ -236,7 +236,8 @@ bar {
 }
 
 exec --no-startup-id insync start
-exec --no-startup-id synergy
+# exec --no-startup-id synergy
 #exec --no-startup-id deluge
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
+exec --no-startup-id mopidy
