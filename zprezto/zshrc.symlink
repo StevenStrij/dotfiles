@@ -21,6 +21,9 @@ then
   source /usr/share/doc/pkgfile/command-not-found.zsh
 fi
 
+# Startx at login
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+
 PATH=$PATH:/home/steven/.dotfiles/bin/
 
 alias tmk="tmux kill-session -t"

@@ -13,6 +13,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'klen/python-mode'
 Plugin 'ap/vim-css-color'
 Plugin 'adimit/prolog.vim'
+Plugin 'nvie/vim-flake8'
 
 " Class outline viewer
 Plugin 'majutsushi/tagbar'
@@ -73,6 +74,8 @@ set laststatus=2                              " Always show statusline
 set nofoldenable
 set hlsearch                                  " Highlight all search hits
 set spell                                     " Enable spell checking
+
+set autochdir
 
 "set cm=blowfish2                              "
 

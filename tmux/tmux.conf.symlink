@@ -47,7 +47,7 @@ bind -t vi-copy Escape cancel
 
 # enable utf-8 on status bar
 set -g status on
-set -g status-utf8 on
+# set -g status-utf8 on
 
 set-option -g message-fg white
 set-option -g message-bg red
