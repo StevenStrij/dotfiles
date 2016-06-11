@@ -63,6 +63,8 @@ yaourt --noconfirm i3-gaps
 yaourt --noconfirm i3-blocks
 yaourt --noconfirm j4-dmenu-desktop
 yaourt --noconfirm nitrogen
+yaourt --noconfirm rofi #19
+yaourt --noconfirm compton
 
 # Utility
 yaourt --noconfirm p7zip
