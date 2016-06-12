@@ -1,10 +1,16 @@
 # https://github.com/vivien/i3blocks/wiki/Writing-Your-Own-Blocklet
 
 command=~/.i3blocks/scripts/$BLOCK_NAME
-separator_block_width=10
+# separator_block_width=10
 markup=pango
 separator=false
 align=center
+
+separator_block_width=10
+border_top=0
+border_left=0
+border_right=0
+border_bottom=3
 
 # [window]
 # interval=1
@@ -45,17 +51,18 @@ color=#ABB59F
 # command=echo "]"
 # color=#598073
 
-[sep1]
-interval=once
-separator=false
-separator_block_width=6
-command=echo "["
-color=#598073
+# [sep1]
+# interval=once
+# separator=false
+# separator_block_width=6
+# command=echo "["
+# color=#598073
 
 [load_average]
 label= 
 interval=10
 urgent=false
+border=#ebdbb2
 
 [cpu_usage]
 label=
@@ -74,12 +81,12 @@ label=
 instance=/home/
 interval=30
 
-[sep2]
-interval=once
-separator=false
-separator_block_width=
-command=echo "]"
-color=#598073
+# [sep2]
+# interval=once
+# separator=false
+# separator_block_width=
+# command=echo "]"
+# color=#598073
 
 #[disk]
 #label=

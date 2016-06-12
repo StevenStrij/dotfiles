@@ -16,6 +16,7 @@ set_from_resource $darkcyan    color6  #000000
 set_from_resource $cyan        color14 #000000
 set_from_resource $darkwhite   color7  #000000
 set_from_resource $white       color15 #000000
+
 # Use custom colors for black
 set $black       #282828
 set $darkblack   #1d2021
@@ -94,7 +95,7 @@ bindsym XF86KbdBrightnessDown exec --no-startup-id kbdlight down 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
