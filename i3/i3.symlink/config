@@ -1,21 +1,20 @@
 set $mod Mod4
 
-
 # Colour Settings
-set_from_resource $darkred     color1  #000000
-set_from_resource $red         color9  #000000
-set_from_resource $darkgreen   color2  #000000
-set_from_resource $green       color10 #000000
-set_from_resource $darkyellow  color3  #000000
-set_from_resource $yellow      color11 #000000
-set_from_resource $darkblue    color4  #000000
-set_from_resource $blue        color12 #000000
-set_from_resource $darkmagenta color5  #000000
-set_from_resource $magenta     color13 #000000
-set_from_resource $darkcyan    color6  #000000
-set_from_resource $cyan        color14 #000000
-set_from_resource $darkwhite   color7  #000000
-set_from_resource $white       color15 #000000
+set $darkred     #cc231d
+set $red         #fb4934
+set $darkgreen   #98971a
+set $green       #b8bb26
+set $darkyellow  #d79921
+set $yellow      #fabd2f
+set $darkblue    #458588
+set $blue        #83a598
+set $darkmagenta #b16286
+set $magenta     #d3869b
+set $darkcyan    #689d6a
+set $cyan        #8ec07c
+set $lightgrey   #a89984
+set $white       #ebdbb2
 
 # Use custom colors for black
 set $black       #282828
@@ -25,13 +24,12 @@ set $transparent #00000000
 set $ws1  "1:  "
 set $ws2  "2:  "
 set $ws3  "3:  "
-set $ws4  "4:  "
+set $ws4  "4: "
 set $ws5  "5:  "
 set $ws7  "7:  "
 set $ws6  "6:  "
 set $ws8  "8:  "
 set $ws9  "9:  "
-set $ws10 "10:  "
 
 font pango:Source Sans Pro, FontAwesome
 
@@ -44,7 +42,6 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
 
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -55,18 +52,18 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
 
- #bindsym $mod+1 workspace 1
- #bindsym $mod+2 workspace 2
- #bindsym $mod+3 workspace 3
- #bindsym $mod+4 workspace 4
- #bindsym $mod+5 workspace 5
- #bindsym $mod+6 workspace 6
- #bindsym $mod+7 workspace 7
- #bindsym $mod+8 workspace 8
- #bindsym $mod+9 workspace 9
- #bindsym $mod+0 workspace 10
+# Window Border Settings
+# new_window none
+# new_window pixel 10
+
+#                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          #4c7899     #285577     #ffffff     #2e9ef4     #285577
+client.focused_inactive #333333     #5f676a     #ffffff     #484e50     #5f676a
+client.unfocused        #333333     #222222     #888888     #292d2e     #222222
+client.urgent           #2f343a     #900000     #ffffff     #900000     #900000
+client.placeholder      #000000     #0c0c0c     #ffffff     #000000     #0c0c0c
+
 
 set $default_gaps_inner 10
 set $default_gaps_outer 0
@@ -80,9 +77,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%- && pkill
 bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle && pkill -RTMIN+10 i3blocks  # mute sound
 
 # Media player controls #
-bindsym XF86AudioPlay exec mpc -q toggle 
-bindsym XF86AudioNext exec mpc -q next
-bindsym XF86AudioPrev exec mpc -q previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # Backlight Controls #
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
@@ -255,9 +252,9 @@ bar {
         separator          $transparent
 
 #                          BORDER       BACKGROUND   TEXT
-        focused_workspace  $transparent $transparent $darkwhite
-        inactive_workspace $transparent $transparent $white
-        active_workspace   $transparent $transparent $white
+        focused_workspace  $transparent $transparent   $darkblue
+        inactive_workspace $transparent $transparent   $white
+        active_workspace   $transparent $transparent   $white
         urgent_workspace   $darkred     $darkred     $transparent
         binding_mode       $darkred     $darkred     $transparent
     }
@@ -270,3 +267,4 @@ exec --no-startup-id compton -b
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
 exec --no-startup-id mopidy
+exec --no-startup-id redshift
