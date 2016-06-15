@@ -110,7 +110,7 @@ set t_Co=256
 
 let g:airline_powerline_fonts = 1
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_extra_conf_globlist = ['*']
 
 " Map f8 for Tagbar
@@ -138,6 +138,11 @@ aug QFClose
   " if |q| doesn't work use |cclose| ?
   au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 aug END
+
+" Ctrl+\ to open ctag in new tab
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" Alt+] to open ctag in new vertical split
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Javascript folding that doesn't suck
 let javaScript_fold=1

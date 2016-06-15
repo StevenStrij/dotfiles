@@ -1,126 +1,77 @@
-# https://github.com/vivien/i3blocks/wiki/Writing-Your-Own-Blocklet
-
 command=~/.i3blocks/scripts/$BLOCK_NAME
-separator_block_width=10
 markup=pango
 separator=false
 align=center
 
-# [window]
-# interval=1
-# separator_block_width=5
-# 
-# [focused]
-# interval=1
-# separator_block_width=1
-# color=#87AFAF
-# 
-# [close]
-# interval=1
-# min_width=1366 y=768
-# align=left
+separator_block_width=10
+border_top=0
+border_left=0
+border_right=0
+border_bottom=3
 
 [mediaplayer]
 label=
+# instance=spotify
 interval=1
 color=#ABB59F
-
-[sep1]
-interval=once
-separator=false
-separator_block_width=2
-command=echo "["
-color=#598073
-
-[stopwatch_countdown]
-interval=1
-separator_block_width=2
-separator=false
-instance=yad_timeup
-
-[sep2]
-interval=once
-separator=false
-separator_block_width=10
-command=echo "]"
-color=#598073
-
-[sep1]
-interval=once
-separator=false
-separator_block_width=6
-command=echo "["
-color=#598073
+border=#ebdbb2
 
 [load_average]
 label= 
 interval=10
 urgent=false
+border=#83a598
 
 [cpu_usage]
 label=
 interval=2
+border=#2D9E9E
 
-#[mem]
-#label=
-#interval=10
+# [mem]
+# label=
+# interval=10
 
 [temperature]
 label=
 interval=10
+border=#27D39F
 
 [disk]
 label=
 instance=/home/
 interval=30
-
-[sep2]
-interval=once
-separator=false
-separator_block_width=
-command=echo "]"
-color=#598073
-
-#[disk]
-#label=
-#instance=/media/usb
-#interval=10
-
-#[pacman]
-#label=
-#interval=30
-#color=#C7C795
-
-#[gmail]
-#label=
-#interval=10
-#color=#b294bb
-#urgent=false
+border=#3E60AF
 
 [iface]
 label=
 instance=wlp3s0
 interval=10
 color=#8abeb7
+border=#4D2ABD
 
-#[wifi_ssid]
-#label=
-#instance=wlp3s0
-#interval=10
+[wifi_ssid]
+label=
+instance=wlp3s0
+interval=10
+border=#43D2F9
 
 [bandwidth]
 instance=enp4s0
 interval=5
 color=#AE95C7
+border=#a89984
 
 [volume]
 label=
 instance=Master
 interval=once
 signal=10
+border=#689d6a
 
-# [battery]
-# interval=10
+[battery]
+interval=10
+border=#cc231d
 
 [date]
 interval=1
+border=#ebdbb2

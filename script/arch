@@ -42,9 +42,11 @@ yaourt --noconfirm mopidy
 yaourt --noconfirm mopidy-spotify
 yaourt --noconfirm ncmpcpp
 yaourt --noconfirm spotify
+yaourt --noconfirm playerctl
 
 # Video
 yaourt --noconfirm vlc
+yaourt --noconfirm smplayer
 
 # Internet
 yaourt --noconfirm deluge
@@ -53,16 +55,19 @@ yaourt --noconfirm insync
 yaourt --noconfirm iputils
 
 # Coding
+yaourt --noconfirm termite
 yaourt --noconfirm gdb
 yaourt --noconfirm neovim
 yaourt --noconfirm meld
 yaourt --noconfirm ycm-generator
 
 # WM
-yaourt --noconfirm i3-gaps
+yaourt --noconfirm i3-gaps-next
 yaourt --noconfirm i3-blocks
 yaourt --noconfirm j4-dmenu-desktop
 yaourt --noconfirm nitrogen
+yaourt --noconfirm rofi #19
+yaourt --noconfirm compton
 
 # Utility
 yaourt --noconfirm p7zip
@@ -85,6 +90,7 @@ yaourt --noconfirm poppler
 yaourt --noconfirm mediainfo
 yaourt --noconfirm xtitle
 yaourt --noconfirm w3m
+yaourt --noconfirm sysstat
 
 
 # pkgfile getting stuff
