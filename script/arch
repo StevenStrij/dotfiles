@@ -18,6 +18,10 @@ tar -xvf yaourt.tar.gz
 cd "yaourt"
 makepkg -sri
 
+# Basic
+sudo pacman -S rxvt-unicode
+sudo pacman -S lm_sensors
+
 # Fonts
 yaourt --noconfirm adobe-source-sans-pro-fonts
 yaourt --noconfirm ttf-font-awesome
@@ -75,6 +79,7 @@ yaourt --noconfirm ranger
 yaourt --noconfirm shutter
 yaourt --noconfirm skype
 yaourt --noconfirm synergy
+yaourt --noconfirm qt5-base
 yaourt --noconfirm update-pacman-mirrorlist
 yaourt --noconfirm vlc
 yaourt --noconfirm ttf-font-awesome
@@ -107,3 +112,6 @@ sudo pkgfile --update
 # This is for nvim to get same plugins as vim
 ln -s ~/.vim ~/.config/nvim
 ln -s ~/.vimrc ~/.config/nvim/init.vim
+
+mkdir ~/.vim/backup
+mkdir ~/.vim/bundle
