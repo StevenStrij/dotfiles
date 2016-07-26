@@ -1,63 +1,54 @@
-set nocompatible                              " Make vim more useful
-filetype off                                  " required!
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle
-" required!
-Plugin 'gmarik/vundle'
-
+call plug#begin('~/.vim/plug')
 " Syntax checking/autocomplete plugins
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'klen/python-mode'
-Plugin 'ap/vim-css-color'
-Plugin 'adimit/prolog.vim'
-Plugin 'nvie/vim-flake8'
+Plug 'Valloric/YouCompleteMe'
+" Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
+Plug 'klen/python-mode'
+Plug 'ap/vim-css-color'
+Plug 'adimit/prolog.vim'
+Plug 'nvie/vim-flake8'
+Plug 'ervandew/supertab'
 
 " Class outline viewer
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
 " File finder
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Git wrapper in vim
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Movement improvements in vim
-Plugin 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
 " Solarized colour theme
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
 " Super neato looking bar at the bottom
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
-" Go Plugin
-Plugin 'fatih/vim-go'
+" Go Plug
+Plug 'fatih/vim-go'
 
 " Code-grep
-Plugin 'mileszs/ack.vim'
-Plugin 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
 
 " Surround, bracket functionality
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Tmux Navigation
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Comment lines of code
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
-call vundle#end()
-
-filetype plugin indent on
+call plug#end()
 
 set background=dark
 let g:solarized_termtrans = 1
 colorscheme solarized
 
-syntax enable
 set modeline
 set smartindent
 set tabstop=2                                 " Tab key results in 4 spaces
@@ -110,8 +101,9 @@ set t_Co=256
 
 let g:airline_powerline_fonts = 1
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/plug/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_extra_conf_globlist = ['*']
+set completeopt-=preview
 
 " Map f8 for Tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -151,3 +143,6 @@ au FileType javascript call JavaScriptFold()
 " Conceal
 set conceallevel=2
 hi Conceal ctermfg=231 ctermbg=233
+
+" Neomake autorun
+autocmd! BufEnter,BufWritePost * Neomake
