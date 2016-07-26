@@ -22,4 +22,3 @@ xrandr --output DVI-I-3 --mode 1680x1050 --left-of DVI-I-2
 
 # Starting i3
 exec i3
-xrandr --output HDMI-0 --primary --mode 1920x1080 --right-of DVI-D-0

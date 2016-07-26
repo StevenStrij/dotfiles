@@ -11,7 +11,7 @@ border_bottom=3
 
 [mediaplayer]
 label=
-# instance=spotify
+instance=spotify
 interval=1
 color=#ABB59F
 border=#ebdbb2
