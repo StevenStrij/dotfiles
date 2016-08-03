@@ -43,6 +43,9 @@ Plug 'christoomey/vim-tmux-navigator'
 " Comment lines of code
 Plug 'tpope/vim-commentary'
 
+" YCM Gen
+Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
+
 call plug#end()
 
 set background=dark
