@@ -8,6 +8,7 @@ Plug 'ap/vim-css-color'
 Plug 'adimit/prolog.vim'
 Plug 'nvie/vim-flake8'
 Plug 'ervandew/supertab'
+Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 
 " Class outline viewer
 Plug 'majutsushi/tagbar'
@@ -146,3 +147,8 @@ hi Conceal ctermfg=231 ctermbg=233
 
 " Neomake autorun
 autocmd! BufEnter,BufWritePost * Neomake
+let g:neomake_cpp_enabled_makers = ['clang']
+let g:neomake_cpp_clang_maker = {
+   \ 'exe': 'clang++',
+   \ 'args': ['-O2', '-Wall', '-Werror', '`pkg-config gtkmm-3.0 --cflags`'],
+   \ }
