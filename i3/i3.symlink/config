@@ -64,6 +64,9 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 
+workspace $ws1 output DVI-D-0
+workspace $ws2 output HDMI-0
+
 # Window Border Settings
 # new_window none
 # new_window pixel 10
@@ -280,4 +283,5 @@ exec --no-startup-id nitrogen --restore
 # exec --no-startup-id nm-applet
 exec --no-startup-id mopidy
 exec --no-startup-id redshift
-exec --no-startup-id slack
+exec --no-startup-id i3-msg 'workspace $ws4; exec slack; workspace 1'
+exec --no-startup-id i3-msg 'workspace $ws5; exec spotify; workspace 1'
