@@ -1,9 +1,18 @@
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
 call plug#begin('~/.vim/plug')
 " Syntax checking/autocomplete plugins
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " Plug 'scrooloose/syntastic'
+Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
+Plug 'zchee/deoplete-clang'
+Plug 'eagletmt/neco-ghc'
+Plug 'zchee/deoplete-jedi'
+
 Plug 'neomake/neomake'
-Plug 'klen/python-mode'
+" Plug 'klen/python-mode'
 Plug 'ap/vim-css-color'
 Plug 'adimit/prolog.vim'
 Plug 'nvie/vim-flake8'
@@ -105,9 +114,17 @@ set t_Co=256
 
 let g:airline_powerline_fonts = 1
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/plug/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_extra_conf_globlist = ['*']
-set completeopt-=preview
+" Ycm
+" let g:ycm_global_ycm_extra_conf = '~/.vim/plug/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_extra_conf_globlist = ['*']
+" set completeopt-=preview
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header='/usr/lib/clang'
+let g:deoplete#sources#clang#flags=['-O2', '-Wall', '-Werror', '`pkg-config gtkmm-3.0 --cflags`']
+let $PATH = $PATH . ':' . expand('~/.cabal/bin')
 
 " Map f8 for Tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -155,3 +172,6 @@ let g:neomake_cpp_clang_maker = {
    \ 'exe': 'clang++',
    \ 'args': ['-O2', '-Wall', '-Werror', '`pkg-config gtkmm-3.0 --cflags`'],
    \ }
+
+" Haskell Autocompletion
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
