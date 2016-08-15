@@ -6,11 +6,15 @@ call plug#begin('~/.vim/plug')
 " Syntax checking/autocomplete plugins
 " Async Autocompletion
 Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
-" C, GHC/Haskell, Python, Vim
+" C, GHC/Haskell, Python, Vim, Go
 Plug 'zchee/deoplete-clang'
 Plug 'eagletmt/neco-ghc'
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/neco-vim'
+
+" Go Plugins
+Plug 'nsf/gocode'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 Plug 'neomake/neomake'
 Plug 'ap/vim-css-color'
@@ -30,9 +34,6 @@ Plug 'altercation/vim-colors-solarized'
 
 " Super neato looking bar at the bottom
 Plug 'bling/vim-airline'
-
-" Go Plug
-Plug 'fatih/vim-go'
 
 " Code-grep
 Plug 'mileszs/ack.vim'
@@ -102,6 +103,8 @@ let g:deoplete#sources#clang#clang_header='/usr/lib/clang'
 let g:deoplete#sources#clang#flags=['-O2', '-Wall', '-Werror', '`pkg-config gtkmm-3.0 --cflags`']
 let $PATH = $PATH . ':' . expand('~/.cabal/bin')
 
+let g:deoplete#sources#go#gocode_binary = '/usr/bin/gocode'
+
 " Map f8 for Tagbar
 nmap <F8> :TagbarToggle<CR>
 
@@ -126,3 +129,6 @@ let g:neomake_cpp_clang_maker = {
    \ 'exe': 'clang++',
    \ 'args': ['-O2', '-Wall', '-Werror', '`pkg-config gtkmm-3.0 --cflags`'],
    \ }
+
+" Supertab completion from top to bottom
+let g:SuperTabDefaultCompletionType = "<c-n>"
