@@ -4,20 +4,17 @@ endfunction
 
 call plug#begin('~/.vim/plug')
 " Syntax checking/autocomplete plugins
-" Plug 'Valloric/YouCompleteMe'
-" Plug 'scrooloose/syntastic'
+" Async Autocompletion
 Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
+" C, GHC/Haskell, Python, Vim
 Plug 'zchee/deoplete-clang'
 Plug 'eagletmt/neco-ghc'
 Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/neco-vim'
 
 Plug 'neomake/neomake'
-" Plug 'klen/python-mode'
 Plug 'ap/vim-css-color'
-Plug 'adimit/prolog.vim'
-Plug 'nvie/vim-flake8'
 Plug 'ervandew/supertab'
-Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 
 " Class outline viewer
 Plug 'majutsushi/tagbar'
@@ -27,9 +24,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " Git wrapper in vim
 Plug 'tpope/vim-fugitive'
-
-" Movement improvements in vim
-Plug 'easymotion/vim-easymotion'
 
 " Solarized colour theme
 Plug 'altercation/vim-colors-solarized'
@@ -53,11 +47,10 @@ Plug 'christoomey/vim-tmux-navigator'
 " Comment lines of code
 Plug 'tpope/vim-commentary'
 
-" YCM Gen
-Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
-
 call plug#end()
 
+" Basic Vim Settings
+set t_Co=256
 set background=dark
 let g:solarized_termtrans = 1
 colorscheme solarized
@@ -81,20 +74,9 @@ set spell                                     " Enable spell checking
 
 set autochdir
 
-"set cm=blowfish2                              "
-
 " Backup
 set noswapfile
 set backupdir=~/.vim/backup
-
-if has("multi_byte")
-  if &termencoding == ""
-    let &termencoding = &encoding
-  endif
-  set encoding=utf-8
-  setglobal fileencoding=utf-8
-  set fileencodings=ucs-bom,utf-8,latin1
-endif
 
 " Now, make python work with virtualenvs:
 if has("python") && !empty($VIRTUAL_ENV)
@@ -110,14 +92,8 @@ if 'PYTHONPATH' not in os.environ:
 EOF
 endif
 
-set t_Co=256
 
 let g:airline_powerline_fonts = 1
-
-" Ycm
-" let g:ycm_global_ycm_extra_conf = '~/.vim/plug/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-" let g:ycm_extra_conf_globlist = ['*']
-" set completeopt-=preview
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -135,35 +111,13 @@ nmap <silent> <C-Down> :wincmd j<CR>
 nmap <silent> <C-Left> :wincmd h<CR>
 nmap <silent> <C-Right> :wincmd l<CR>
 
-" Remap space for use with easymotion
-map <Space> \\w
-
 " Map enter to clear highlighted search hits
 nnoremap <CR> :nohlsearch<CR><CR>
-
-" Toggle paste mode with F3
-set pastetoggle=<F3>
-
-" QuickFix close function; :q should close a window *and* the accompanying
-" quickfix
-aug QFClose
-  au!
-  " if |q| doesn't work use |cclose| ?
-  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
-aug END
 
 " Ctrl+\ to open ctag in new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Alt+] to open ctag in new vertical split
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-
-" Javascript folding that doesn't suck
-let javaScript_fold=1
-au FileType javascript call JavaScriptFold()
-
-" Conceal
-set conceallevel=2
-hi Conceal ctermfg=231 ctermbg=233
 
 " Neomake autorun
 autocmd! BufEnter,BufWritePost * Neomake
@@ -172,6 +126,3 @@ let g:neomake_cpp_clang_maker = {
    \ 'exe': 'clang++',
    \ 'args': ['-O2', '-Wall', '-Werror', '`pkg-config gtkmm-3.0 --cflags`'],
    \ }
-
-" Haskell Autocompletion
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
