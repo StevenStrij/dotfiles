@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plug')
 Plug 'Valloric/YouCompleteMe'
 " Plug 'scrooloose/syntastic'
 Plug 'neomake/neomake'
-Plug 'klen/python-mode'
+" Plug 'klen/python-mode'
 Plug 'ap/vim-css-color'
 Plug 'adimit/prolog.vim'
 Plug 'nvie/vim-flake8'
