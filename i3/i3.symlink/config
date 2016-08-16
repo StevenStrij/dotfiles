@@ -21,8 +21,8 @@ set $black       #282828
 set $darkblack   #1d2021
 set $transparent #00000000
 
-set $ws1  "1:  "
-set $ws2  "2:  "
+set $ws1  "1:  "
+set $ws2  "2:  "
 set $ws3  "3:  "
 set $ws4  "4: "
 set $ws5  "5:  "
@@ -85,10 +85,10 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Backlight Controls #
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
-bindsym XF86KbdBrightnessUp exec --no-startup-id kbdlight up 10
-bindsym XF86KbdBrightnessDown exec --no-startup-id kbdlight down 10
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo xbacklight -dec 5
+bindsym XF86KbdBrightnessUp exec --no-startup-id sudo kbdlight up 10
+bindsym XF86KbdBrightnessDown exec --no-startup-id sudo kbdlight down 10
 
 ### Keybindings ###
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -269,7 +269,7 @@ bar {
 exec --no-startup-id xrandr --output HDMI-0 --primary --mode 1920x1080 --right-of DVI-D-0
 exec --no-startup-id compton -b
 exec --no-startup-id nitrogen --restore
-# exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 exec --no-startup-id mopidy
 exec --no-startup-id redshift
 exec --no-startup-id i3-msg 'workspace $ws4; exec slack; workspace 1'
