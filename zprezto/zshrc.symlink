@@ -24,7 +24,10 @@ fi
 # Startx at login
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
-PATH=$PATH:/home/steven/.dotfiles/bin/
+export PATH=$PATH:/home/steven/.dotfiles/bin/
+
+export GOPATH=~/go
+export PATH=$PATH:~/go
 
 alias tmk="tmux kill-session -t"
 alias tma="tmux attach-session -t"
@@ -36,3 +39,4 @@ alias speedtest="speedtest --bytes"
 
 echo "You have to do these things!!"
 ls ~/Desktop
+

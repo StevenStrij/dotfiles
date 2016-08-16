@@ -63,6 +63,7 @@ yaourt --noconfirm ycm-generator
 
 # WM
 yaourt --noconfirm i3-gaps-next
+yaourt --noconfirm i3lock
 yaourt --noconfirm i3-blocks
 yaourt --noconfirm j4-dmenu-desktop
 yaourt --noconfirm nitrogen
