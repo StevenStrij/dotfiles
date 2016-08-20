@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sudo apt-get install vim tmux
+# sudo pacman -S vim tmux
+
+git config --global user.email "ststrijakov@gmail.com"
+git config --global user.name "stevenStrij"
+
+cp ../tmux/tmux.conf.symlink ~/.tmux.conf
+cat ../vim/vimrc.symlink | head -76 | tail -18 > ~/.vimrc
+
+git clone https://github.com/stevenStrij/COMP6733 ~/Desktop/COMP6733
