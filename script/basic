@@ -10,3 +10,5 @@ cp ../tmux/tmux.conf.symlink ~/.tmux.conf
 cat ../vim/vimrc.symlink | head -76 | tail -18 > ~/.vimrc
 
 git clone https://github.com/stevenStrij/COMP6733 ~/Desktop/COMP6733
+
+echo "alias smake=\"make TARGET=srf06-cc26xx BOARD=sensortag/cc2650\"" >> ~/.bashrc
