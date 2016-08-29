@@ -1,0 +1,128 @@
+#!/bin/bash
+
+# Creating folder for where installs will go
+
+install_dir="$(HOME)/.bin"
+
+echo "Installing in $install_dir"
+mkdir $(HOME)/.bin
+cd ~/.bin
+
+
+
+# Installing Neovim
+echo "Installing Neovim in $install_dir/neovim"
+git clone https://github.com/neovim/neovim neovim-git
+cd neovim-git
+rm -rf build
+make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX:PATH=$(HOME)/.bin"
+make install
+cd ..
+rm -rf neovim-git
+echo "Done installing Neovim"
+
+echo "Adding export to ~/.zshrc"
+echo "export PATH=\"\$HOME/.bin/neovim/bin:\$PATH\"" >> ~/.zshrc
+echo "Adding vim=nvim alias to ~/.zshrc"
+echo "alias vim=nvim" >> ~/.zshrc
+
+# Install Neovim Plugins
+# First, the plugin manager
+mkdir ~/.config
+mkdir ~/.vim
+touch ~/.vimrc
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+
+echo "Installing vim plug"
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+
+# Setting up the vimrc
+echo "Setting up basic vimrc"
+echo "
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
+call plug#begin('~/.vim/plug')
+\" Syntax checking/autocomplete plugins
+\" Async Autocompletion
+Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
+\" C
+Plug 'zchee/deoplete-clang'
+
+\" File finder
+Plug 'ctrlpvim/ctrlp.vim'
+
+\" Class outline viewer
+Plug 'majutsushi/tagbar'
+
+\" Solarized colour theme
+Plug 'altercation/vim-colors-solarized'
+
+\" Super neato looking bar at the bottom
+Plug 'bling/vim-airline'
+
+\" Surround, bracket functionality
+Plug 'tpope/vim-surround'
+
+call plug#end()
+
+\" Basic Vim Settings
+set t_Co=256
+set background=dark
+let g:solarized_termtrans = 1
+colorscheme solarized
+
+set modeline
+set smartindent
+set tabstop=2                                 \" Tab key results in 2 spaces
+set shiftwidth=2                              \" The num of spaces for indenting
+set backspace=indent,eol,start
+set softtabstop=2                             \" Tab key results in 2 spaces
+set expandtab                                 \" Expand tabs to spaces
+set clipboard+=unnamed
+set clipboard+=unnamedplus
+set go+=a
+set number                                    \" Enable line numbers
+set laststatus=2                              \" Always show statusline
+set nofoldenable
+set hlsearch                                  \" Highlight all search hits
+set spell                                     \" Enable spell checking
+
+set autochdir
+
+\" Backup
+set noswapfile
+set backupdir=~/.vim/backup
+
+let g:airline_powerline_fonts = 1
+
+\" Deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header='/usr/lib/clang'
+let g:deoplete#sources#clang#flags=['-O2', '-Wall', '-Werror']
+
+\" Map f8 for Tagbar
+nmap <F8> :TagbarToggle<CR>
+
+\" Map enter to clear highlighted search hits
+nnoremap <CR> :nohlsearch<CR><CR>
+
+\" Neomake autorun
+autocmd! BufEnter,BufWritePost * Neomake
+let g:neomake_cpp_enabled_makers = ['clang']
+let g:neomake_cpp_clang_maker = {
+   \ 'exe': 'clang++',
+   \ 'args': ['-O2', '-Wall', '-Werror', '`pkg-config gtkmm-3.0 --cflags`'],
+   \ }
+" > ~/.vimrc
+
+echo "Vimrc is done"
+
+# Installing the actual plugins
+echo "Installing Plugins"
+nvim +PlugInstall +qall
