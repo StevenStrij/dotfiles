@@ -5,6 +5,8 @@
 # local machine, but the reason this script exists is because of no root privilege, 
 # this will install everything locally under ~/.bin
 
+# Any critique is very welcome, it's currently very hacky =)
+
 install_dir="$HOME/.bin"
 neovim_install="$install_dir/neovim"
 python3_install="$install_dir/python3.5"
