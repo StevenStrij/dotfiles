@@ -4,22 +4,27 @@ install_dir="$HOME/.bin"
 neovim_install="$install_dir/neovim"
 python3_install="$install_dir/python3.5"
 
+echo "--- WARNING ---"
+echo "This script is crude. It will create a $HOME/.bin folder and install python3.5 and neovim there"
+echo "along with autocompletion support and some plugins to get you started"
+
 echo "Installing in $install_dir"
 mkdir $install_dir
-cd $install_dir
+tmp_dir=`mktemp -d`
+cd $tmp_dir
 
 touch $HOME/.zshrc
 
 install_neovim() 
 {
-  cd $install_dir
+  cd $tmp_dir
+
   # Installing Neovim
   echo "Installing Neovim in $neovim"
   echo "Warning... This will take a while"
   sleep 2
   git clone https://github.com/neovim/neovim neovim-git
   cd neovim-git
-  rm -rf build
   echo "Starting building"
   sleep 2
   make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX:PATH=$neovim"
@@ -27,52 +32,61 @@ install_neovim()
   echo "Starting installing"
   sleep 2
   make install
-
-  cd ..
-  rm -rf neovim-git
   echo "Done installing Neovim"
 }
 
 setup_zshrc()
 {
-  echo "Adding export to ~/.zshrc"
+  echo "Adding export to $HOME/.zshrc"
   if ! grep -q  "export PATH=\"\$HOME/.bin/neovim/bin:\$PATH\"" "$HOME/.zshrc"; then
-    echo "export PATH=\"\$HOME/.bin/neovim/bin:\$PATH\"" >> ~/.zshrc
+    echo "export PATH=\"\$HOME/.bin/neovim/bin:\$PATH\"" >> $HOME/.zshrc
   fi
 
-  echo "Adding vim=nvim alias to ~/.zshrc"
+  echo "Adding vim=nvim alias to $HOME/.zshrc"
   if ! grep -q  "alias vim=nvim" "$HOME/.zshrc"; then
-    echo "alias vim=nvim" >> ~/.zshrc
+    echo "alias vim=nvim" >> $HOME/.zshrc
   fi
 
-  echo "Adding python path to ~/.zshrc"
+  echo "Adding python path to $HOME/.zshrc"
   if ! grep -q  "export PATH=\"$HOME/.bin/.python3.5/bin:$PATH\"" "$HOME/.zshrc"; then
-    echo "export PATH=\"$HOME/.bin/.python3.5/bin:$PATH\"" >> ~/.zshrc
+    echo "export PATH=\"$HOME/.bin/.python3.5/bin:$PATH\"" >> $HOME/.zshrc
   fi
 
-  source ~/.zshrc
+  echo "Vim as VISUAL and EDITOR"
+  if ! grep -q  "export EDITOR=nvim" "$HOME/.zshrc"; then
+    echo "export VISUAL=nvim" >> $HOME/.zshrc
+  fi
+  if ! grep -q  "export VISUAL=nvim" "$HOME/.zshrc"; then
+    echo "export VISUAL=nvim" >> $HOME/.zshrc
+  fi
+
+  source $HOME/.zshrc
 }
 
 setup_neovim() 
 {
   # First, the plugin manager
-  mkdir ~/.config
-  mkdir -p ~/.vim/backup
-  touch ~/.vimrc
-  ln -s ~/.vim ~/.config/nvim
-  ln -s ~/.vimrc ~/.config/nvim/init.vim
+  mkdir $HOME/.config
+  mkdir -p $HOME/.vim/backup
+  touch $HOME/.vimrc
+  ln -s $HOME/.vim $HOME/.config/nvim
+  ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 }
 
 setup_vimrc()
 {
   # Setting up the vimrc
   echo "Setting up basic vimrc"
+  if [ -f "$HOME/.vimrc" ]; then
+    echo "Found vimrc, creating back in $HOME/.vimrc.backup"
+    mv $HOME/.vimrc $HOME/.vimrc.backup
+  fi
   echo "
   function! DoRemote(arg)
     UpdateRemotePlugins
   endfunction
 
-  call plug#begin('~/.vim/plug')
+  call plug#begin('$HOME/.vim/plug')
   \" Syntax checking/autocomplete plugins
   \" Async Autocompletion
   Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
@@ -124,7 +138,7 @@ setup_vimrc()
 
   \" Backup
   set noswapfile
-  set backupdir=~/.vim/backup
+  set backupdir=$HOME/.vim/backup
 
   let g:airline_powerline_fonts = 1
 
@@ -147,7 +161,7 @@ setup_vimrc()
      \ 'exe': 'clang++',
      \ 'args': ['-O2', '-Wall', '-Werror'],
      \ }
-  " > ~/.vimrc
+  " > $HOME/.vimrc
 
   echo "Vimrc is done"
 }
@@ -155,7 +169,7 @@ setup_vimrc()
 install_plugins()
 {
   echo "Installing vim plug"
-  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+  curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   echo "Installing Plugins"
@@ -164,20 +178,24 @@ install_plugins()
 
 install_python3()
 {
+  cd $tmp_dir
   wget "https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz"
   tar xf Python-3.5.2.tgz
   cd Python-3.5.2
   ./configure --prefix=$python3_install
   make
   make install
-  cd ..
-  rm -rf Python-3.5.2 Python-3.5.2.tgz
 
   pip3 install --user neovim
 }
 
 install_neovim;
+sleep 2
 setup_zshrc;
+sleep 2
 setup_neovim;
+sleep 2
 setup_vimrc;
+sleep 2
 install_plugins;
+sleep 2
