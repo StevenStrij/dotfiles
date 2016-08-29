@@ -2,11 +2,11 @@
 
 # Creating folder for where installs will go
 
-install_dir="$(HOME)/.bin"
+install_dir="$HOME/.bin"
 
 echo "Installing in $install_dir"
-mkdir $(HOME)/.bin
-cd ~/.bin
+mkdir $install_dir
+cd $install_dir
 
 
 
@@ -15,7 +15,7 @@ echo "Installing Neovim in $install_dir/neovim"
 git clone https://github.com/neovim/neovim neovim-git
 cd neovim-git
 rm -rf build
-make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX:PATH=$(HOME)/.bin"
+make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX:PATH=$HOME/.bin"
 make install
 cd ..
 rm -rf neovim-git
