@@ -8,6 +8,16 @@ echo "--- WARNING ---"
 echo "This script is crude. It will create a $HOME/.bin folder and install python3.5 and neovim there"
 echo "along with autocompletion support and some plugins to get you started"
 
+while true
+do
+  read -p "Are you sure you want to continue? (y/n)" choice
+  case "$choice" in 
+    y|Y ) break;;
+    n|N ) exit 1;;
+    * ) echo "invalid";;
+  esac
+done
+
 echo "Installing in $install_dir"
 mkdir $install_dir
 tmp_dir=`mktemp -d`
