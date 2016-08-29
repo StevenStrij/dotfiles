@@ -56,32 +56,35 @@ setup_neovim()
   ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 }
 
-setup_zshrc()
-{
-  echo "Adding export to $HOME/.zshrc"
-  if ! grep -q  "export PATH=\"\$HOME/.bin/neovim/bin:\$PATH\"" "$HOME/.zshrc"; then
-    echo "export PATH=\"\$HOME/.bin/neovim/bin:\$PATH\"" >> $HOME/.zshrc
+
+rc_helper() {
+  if ! grep -q  "$1" "$2"; then
+    echo "$1" >> "$2"
   fi
+}
+
+setup_rc()
+{
+  case `basename $SHELL` in
+    zsh) rc="$HOME/.zshrc";;
+    bash) rc="$HOME/.bashrc";;
+    * ) rc="$HOME/.bashrc";;
+  esac
+
+  echo "Adding export to $HOME/.zshrc and $HOME/.bashrc"
+  rc_helper "export PATH=\"\$HOME/.bin/neovim/bin:\$PATH\"" $rc
 
   echo "Adding vim=nvim alias to $HOME/.zshrc"
-  if ! grep -q  "alias vim=nvim" "$HOME/.zshrc"; then
-    echo "alias vim=nvim" >> $HOME/.zshrc
-  fi
+  rc_helper "alias vim=nvim" "$HOME/.zshrc" $rc
 
   echo "Adding python path to $HOME/.zshrc"
-  if ! grep -q  "export PATH=\"$HOME/.bin/.python3.5/bin:$PATH\"" "$HOME/.zshrc"; then
-    echo "export PATH=\"$HOME/.bin/.python3.5/bin:$PATH\"" >> $HOME/.zshrc
-  fi
+  rc_helper "export PATH=\"$HOME/.bin/.python3.5/bin:$PATH\"" "$HOME/.zshrc" $rc
 
   echo "Vim as VISUAL and EDITOR"
-  if ! grep -q  "export EDITOR=nvim" "$HOME/.zshrc"; then
-    echo "export VISUAL=nvim" >> $HOME/.zshrc
-  fi
-  if ! grep -q  "export VISUAL=nvim" "$HOME/.zshrc"; then
-    echo "export VISUAL=nvim" >> $HOME/.zshrc
-  fi
+  rc_helper "export EDITOR=nvim" "$HOME/.zshrc" $rc
+  rc_helper "export VISUAL=nvim" "$HOME/.zshrc" $rc
 
-  source $HOME/.zshrc
+  source $rc
 }
 
 setup_vimrc()
@@ -202,7 +205,7 @@ install_python3()
 
 install_neovim;
 sleep 2
-setup_zshrc;
+setup_rc;
 sleep 2
 install_python3;
 sleep 2
