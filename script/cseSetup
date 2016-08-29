@@ -20,19 +20,30 @@ install_neovim()
   cd $tmp_dir
 
   # Installing Neovim
-  echo "Installing Neovim in $neovim"
+  echo "Installing Neovim in $neovim_install"
   echo "Warning... This will take a while"
   sleep 2
   git clone https://github.com/neovim/neovim neovim-git
   cd neovim-git
   echo "Starting building"
   sleep 2
-  make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX:PATH=$neovim"
+  make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX:PATH=$neovim_install"
 
   echo "Starting installing"
   sleep 2
   make install
   echo "Done installing Neovim"
+}
+
+
+setup_neovim() 
+{
+  # First, the plugin manager
+  mkdir $HOME/.config
+  mkdir -p $HOME/.vim/backup
+  touch $HOME/.vimrc
+  ln -s $HOME/.vim $HOME/.config/nvim
+  ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 }
 
 setup_zshrc()
@@ -61,16 +72,6 @@ setup_zshrc()
   fi
 
   source $HOME/.zshrc
-}
-
-setup_neovim() 
-{
-  # First, the plugin manager
-  mkdir $HOME/.config
-  mkdir -p $HOME/.vim/backup
-  touch $HOME/.vimrc
-  ln -s $HOME/.vim $HOME/.config/nvim
-  ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 }
 
 setup_vimrc()
@@ -192,6 +193,8 @@ install_python3()
 install_neovim;
 sleep 2
 setup_zshrc;
+sleep 2
+install_python3;
 sleep 2
 setup_neovim;
 sleep 2
