@@ -12,6 +12,8 @@ cd $install_dir
 
 # Installing Neovim
 echo "Installing Neovim in $install_dir/neovim"
+echo "Warning... This will take a while"
+sleep 2
 git clone https://github.com/neovim/neovim neovim-git
 cd neovim-git
 rm -rf build
@@ -102,7 +104,7 @@ let g:airline_powerline_fonts = 1
 
 \" Deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
+let g:deoplete#sources#clang#libclang_path='/usr/lib/llvm-3.5/lib/libclang.so.1'
 let g:deoplete#sources#clang#clang_header='/usr/lib/clang'
 let g:deoplete#sources#clang#flags=['-O2', '-Wall', '-Werror']
 
@@ -117,7 +119,7 @@ autocmd! BufEnter,BufWritePost * Neomake
 let g:neomake_cpp_enabled_makers = ['clang']
 let g:neomake_cpp_clang_maker = {
    \ 'exe': 'clang++',
-   \ 'args': ['-O2', '-Wall', '-Werror', '`pkg-config gtkmm-3.0 --cflags`'],
+   \ 'args': ['-O2', '-Wall', '-Werror'],
    \ }
 " > ~/.vimrc
 
@@ -126,3 +128,4 @@ echo "Vimrc is done"
 # Installing the actual plugins
 echo "Installing Plugins"
 nvim +PlugInstall +qall
+pip install --user neovim
