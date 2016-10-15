@@ -1,0 +1,224 @@
+#!/bin/bash
+
+# This script is for installing Neovim, Python 3.5 and some vim plugins (including
+# autocompletion using Deoplete) on CSE Machines. You can use this on your own 
+# local machine, but the reason this script exists is because of no root privilege, 
+# this will install everything locally under ~/.bin
+
+# Any critique is very welcome, it's currently very hacky =)
+
+install_dir="$HOME/.bin"
+neovim_install="$install_dir/neovim"
+python3_install="$install_dir/python3.5"
+
+echo "--- WARNING ---"
+echo "This script is crude. It will create a $HOME/.bin folder and install python3.5 and neovim there"
+echo "along with autocompletion support and some plugins to get you started"
+
+while true
+do
+  read -p "Are you sure you want to continue? (y/n) " choice
+  case "$choice" in 
+    y|Y ) break;;
+    n|N ) exit 1;;
+    * ) echo "invalid";;
+  esac
+done
+
+echo "Installing in $install_dir"
+mkdir $install_dir
+tmp_dir=`mktemp -d`
+cd $tmp_dir
+
+touch $HOME/.zshrc
+
+install_neovim() 
+{
+  cd $tmp_dir
+
+  # Installing Neovim
+  echo "Installing Neovim in $neovim_install"
+  echo "Warning... This will take a while"
+  sleep 2
+  git clone https://github.com/neovim/neovim neovim-git
+  cd neovim-git
+  echo "Starting building"
+  sleep 2
+  make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX:PATH=$neovim_install"
+
+  echo "Starting installing"
+  sleep 2
+  make install
+  echo "Done installing Neovim"
+}
+
+
+setup_neovim() 
+{
+  # First, the plugin manager
+  mkdir $HOME/.config
+  mkdir -p $HOME/.vim/backup
+  touch $HOME/.vimrc
+  ln -s $HOME/.vim $HOME/.config/nvim
+  ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
+}
+
+
+rc_helper() {
+  if ! grep -q  "$1" "$2"; then
+    echo "$1" >> "$2"
+  fi
+}
+
+setup_rc()
+{
+  case `basename $SHELL` in
+    zsh) rc="$HOME/.zshrc";;
+    bash) rc="$HOME/.bashrc";;
+    * ) rc="$HOME/.bashrc";;
+  esac
+
+  echo "Adding export to $HOME/.zshrc and $HOME/.bashrc"
+  rc_helper "export PATH=\"\$HOME/.bin/neovim/bin:\$PATH\"" $rc
+
+  echo "Adding vim=nvim alias to $HOME/.zshrc"
+  rc_helper "alias vim=nvim" "$HOME/.zshrc" $rc
+
+  echo "Adding python path to $HOME/.zshrc"
+  rc_helper "export PATH=\"$HOME/.bin/.python3.5/bin:$PATH\"" "$HOME/.zshrc" $rc
+
+  echo "Vim as VISUAL and EDITOR"
+  rc_helper "export EDITOR=nvim" "$HOME/.zshrc" $rc
+  rc_helper "export VISUAL=nvim" "$HOME/.zshrc" $rc
+
+  source $rc
+}
+
+setup_vimrc()
+{
+  # Setting up the vimrc
+  echo "Setting up basic vimrc"
+  if [ -f "$HOME/.vimrc" ]; then
+    echo "Found vimrc, creating back in $HOME/.vimrc.backup"
+    mv $HOME/.vimrc $HOME/.vimrc.backup
+  fi
+  echo "
+  function! DoRemote(arg)
+    UpdateRemotePlugins
+  endfunction
+
+  call plug#begin('$HOME/.vim/plug')
+  \" Syntax checking/autocomplete plugins
+  \" Async Autocompletion
+  Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
+  \" C
+  Plug 'zchee/deoplete-clang'
+  Plug 'neomake/neomake'
+  Plug 'ervandew/supertab'
+
+  \" File finder
+  Plug 'ctrlpvim/ctrlp.vim'
+
+  \" Class outline viewer
+  Plug 'majutsushi/tagbar'
+
+  \" Solarized colour theme
+  Plug 'altercation/vim-colors-solarized'
+
+  \" Super neato looking bar at the bottom
+  Plug 'bling/vim-airline'
+
+  \" Surround, bracket functionality
+  Plug 'tpope/vim-surround'
+
+  call plug#end()
+
+  \" Basic Vim Settings
+  set t_Co=256
+  set background=dark
+  let g:solarized_termtrans = 1
+  colorscheme solarized
+
+  set modeline
+  set smartindent
+  set tabstop=2                                 \" Tab key results in 2 spaces
+  set shiftwidth=2                              \" The num of spaces for indenting
+  set backspace=indent,eol,start
+  set softtabstop=2                             \" Tab key results in 2 spaces
+  set expandtab                                 \" Expand tabs to spaces
+  set clipboard+=unnamed
+  set clipboard+=unnamedplus
+  set go+=a
+  set number                                    \" Enable line numbers
+  set laststatus=2                              \" Always show statusline
+  set nofoldenable
+  set hlsearch                                  \" Highlight all search hits
+  set spell                                     \" Enable spell checking
+
+  set autochdir
+
+  \" Backup
+  set noswapfile
+  set backupdir=$HOME/.vim/backup
+
+  let g:airline_powerline_fonts = 1
+
+  \" Deoplete
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#sources#clang#libclang_path='/usr/lib/i386-linux-gnu/libclang.so.1'
+  let g:deoplete#sources#clang#clang_header='/usr/lib/clang'
+  let g:deoplete#sources#clang#flags=['-O2', '-Wall', '-Werror']
+
+  \" Map f8 for Tagbar
+  nmap <F8> :TagbarToggle<CR>
+
+  \" Map enter to clear highlighted search hits
+  nnoremap <CR> :nohlsearch<CR><CR>
+
+  \" Neomake autorun
+  autocmd! BufEnter,BufWritePost * Neomake
+  let g:neomake_cpp_enabled_makers = ['clang']
+  let g:neomake_cpp_clang_maker = {
+     \ 'exe': 'clang++',
+     \ 'args': ['-O2', '-Wall', '-Werror'],
+     \ }
+  " > $HOME/.vimrc
+
+  echo "Vimrc is done"
+}
+
+install_plugins()
+{
+  echo "Installing vim plug"
+  curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  echo "Installing Plugins"
+  vim +PlugInstall +qall
+}
+
+install_python3()
+{
+  cd $tmp_dir
+  wget "https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz"
+  tar xf Python-3.5.2.tgz
+  cd Python-3.5.2
+  ./configure --prefix=$python3_install
+  make
+  make install
+
+  pip3 install --user neovim
+}
+
+install_neovim;
+sleep 2
+setup_rc;
+sleep 2
+install_python3;
+sleep 2
+setup_neovim;
+sleep 2
+setup_vimrc;
+sleep 2
+install_plugins;
+sleep 2

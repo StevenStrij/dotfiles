@@ -40,7 +40,7 @@ alias tml="tmux ls"
 
 alias vim="nvim"
 
-alias speedtest="speedtest --bytes"
+unalias rm
 
 echo "You have to do these things!!"
 ls ~/Desktop
