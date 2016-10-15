@@ -15,6 +15,11 @@ if [[ -f "${ZDOTDIR:-$HOME}/.zprezto/z/z.sh" ]]; then
   .$HOME/.zprezto/modules/z/z.sh
 fi
 
+# For dircolors
+if [[ -f ~/.dircolors ]] ; then
+  eval $(dircolors -b ~/.dircolors)
+fi
+
 # For pkgfile
 if [ -f /usr/bin/pkgfile ]
 then
