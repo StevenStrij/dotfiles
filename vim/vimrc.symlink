@@ -48,6 +48,10 @@ Plug 'christoomey/vim-tmux-navigator'
 " Comment lines of code
 Plug 'tpope/vim-commentary'
 
+" Django+
+" Plug 'tweekmonster/django-plus.vim'
+" Plug 'carlitux/deoplete-ternjs'
+
 call plug#end()
 
 " Basic Vim Settings
@@ -103,7 +107,7 @@ let g:deoplete#sources#clang#clang_header='/usr/lib/clang'
 let g:deoplete#sources#clang#flags=['-O2', '-Wall', '-Werror', '`pkg-config gtkmm-3.0 --cflags`']
 let $PATH = $PATH . ':' . expand('~/.cabal/bin')
 
-let g:deoplete#sources#go#gocode_binary = '/usr/bin/gocode'
+let g:deoplete#sources#go#gocode_binary = '/home/steven/go/bin/gocode'
 
 " Map f8 for Tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -127,7 +131,7 @@ autocmd! BufEnter,BufWritePost * Neomake
 let g:neomake_cpp_enabled_makers = ['clang']
 let g:neomake_cpp_clang_maker = {
    \ 'exe': 'clang++',
-   \ 'args': ['-O2', '-Wall', '-Werror', '`pkg-config gtkmm-3.0 --cflags`'],
+   \ 'args': ['-std=c++11', '-O2', '-Wall', '-Werror'],
    \ }
 
 " Supertab completion from top to bottom

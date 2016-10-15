@@ -72,7 +72,7 @@ yaourt --noconfirm i3-blocks
 yaourt --noconfirm j4-dmenu-desktop
 yaourt --noconfirm nitrogen
 yaourt --noconfirm rofi #19
-yaourt --noconfirm compton
+sudo pacman -S compton
 
 # Utility
 yaourt --noconfirm p7zip

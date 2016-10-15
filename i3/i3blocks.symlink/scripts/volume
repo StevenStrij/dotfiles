@@ -22,7 +22,7 @@
 # For Jack/Jack2 users, use "jackplug"
 # For ALSA users, you may use "default" for your primary card
 # or you may use hw:# where # is the number of the card desired
-MIXER="default"
+MIXER="pulse"
 [ -n "$(lsmod | grep pulse)" ] && MIXER="pulse"
 [ -n "$(lsmod | grep jack)" ] && MIXER="jackplug"
 MIXER="${2:-$MIXER}"
@@ -64,9 +64,9 @@ format() {
 case $BLOCK_BUTTON in
   1) pavucontrol & "$@" > /dev/null ;;
   2) radiotray & "$@" > /dev/null ;;
-  3) amixer -q -D $MIXER sset $SCONTROL $(capability) toggle ;;  # right click, mute/unmute
-  5) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}+ unmute ;; # scroll up, increase
-  4) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}- unmute ;; # scroll down, decrease
+  3) amixer -q -D $MIXER sset $SCONTROL Playback toggle;;  # right click, mute/unmute
+  5) amixer -q -D $MIXER sset $SCONTROL Playback ${STEP}+ unmute ;; # scroll up, increase
+  4) amixer -q -D $MIXER sset $SCONTROL Playback ${STEP}- unmute ;; # scroll down, decrease
 esac
 
 volume | format
