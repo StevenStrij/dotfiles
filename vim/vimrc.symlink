@@ -102,8 +102,8 @@ let g:airline_powerline_fonts = 1
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header='/usr/lib/clang'
+let g:deoplete#sources#clang#libclang_path='/usr/local/Cellar/llvm/3.8.1/lib/libclang.dylib'
+let g:deoplete#sources#clang#clang_header='/usr/local/Cellar/llvm/3.8.1/lib/clang'
 let g:deoplete#sources#clang#flags=['-O2', '-Wall', '-Werror', '`pkg-config gtkmm-3.0 --cflags`']
 let $PATH = $PATH . ':' . expand('~/.cabal/bin')
 
