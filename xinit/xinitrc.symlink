@@ -21,4 +21,6 @@ xrandr --output DVI-I-2 --mode 1920x1080 --right-of DVI-I-3
 xrandr --output DVI-I-3 --mode 1680x1050 --left-of DVI-I-2
 
 # Starting i3
+sudo ntpd -qg &
 exec i3
+

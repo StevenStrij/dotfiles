@@ -21,6 +21,7 @@ makepkg -sri
 # Basic
 sudo pacman -S rxvt-unicode
 sudo pacman -S lm_sensors
+sudo pacman -S xorg-server-devel
 
 # Fonts
 yaourt --noconfirm adobe-source-sans-pro-fonts
@@ -59,7 +60,7 @@ yaourt --noconfirm insync
 yaourt --noconfirm iputils
 
 # Coding
-yaourt --noconfirm termite
+sudo pacman -S termite
 yaourt --noconfirm gdb
 yaourt --noconfirm neovim
 yaourt --noconfirm meld
@@ -116,3 +117,5 @@ ln -s ~/.vimrc ~/.config/nvim/init.vim
 
 mkdir ~/.vim/backup
 mkdir ~/.vim/plug
+
+echo "Get xf86-input-mtrack"
