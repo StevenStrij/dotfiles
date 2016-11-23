@@ -16,12 +16,6 @@ interval=1
 color=#ABB59F
 border=#ebdbb2
 
-[load_average]
-label= 
-interval=10
-urgent=false
-border=#83a598
-
 [cpu_usage]
 label=
 interval=2

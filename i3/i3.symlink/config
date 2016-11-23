@@ -1,4 +1,4 @@
-set $mod Mod4
+set $mod Mod1
 
 # Colour Settings
 set $darkred     #cc231d
@@ -256,22 +256,23 @@ bar {
 
     colors {
         statusline         $white
-        background         $transparent
-        separator          $transparent
+        background         $black
+        separator          $black
 
 #                          BORDER       BACKGROUND   TEXT
-        focused_workspace  $transparent $transparent   $darkblue
-        inactive_workspace $transparent $transparent   $white
-        active_workspace   $transparent $transparent   $white
-        urgent_workspace   $darkred     $darkred     $transparent
-        binding_mode       $darkred     $darkred     $transparent
+        focused_workspace  $black $black   $darkblue
+        inactive_workspace $black $black   $white
+        active_workspace   $black $black   $white
+        urgent_workspace   $darkred     $darkred     $black
+        binding_mode       $darkred     $darkred     $black
     }
 }
+
+exec --no-startup-id compton -b
+exec --no-startup-id redshift
 
 # exec --no-startup-id insync start
 # exec --no-startup-id synergy
 # exec --no-startup-id deluge
-exec --no-startup-id compton -b
-exec --no-startup-id mopidy
-exec --no-startup-id redshift
-exec --no-startup-id i3-msg 'workspace $ws5; exec spotify; workspace $ws1'
+# exec --no-startup-id mopidy
+# exec --no-startup-id i3-msg 'workspace $ws5; exec spotify; workspace $ws1'

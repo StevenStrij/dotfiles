@@ -104,7 +104,7 @@ yaourt --noconfirm poppler
 yaourt --noconfirm mediainfo
 yaourt --noconfirm xtitle
 yaourt --noconfirm w3m
-yaourt --noconfirm sysstat
+sudo pacman -S -y sysstat
 
 
 # pkgfile getting stuff
