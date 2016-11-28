@@ -1,8 +1,9 @@
 #!/bin/sh
 #DATE=$(date '+ %a  %H:%M')
-TIME=$(date '+ %H:%M:%S  ')
-DATE=$(date '+   %d/%m')
-DATE_TIME="$TIME...$DATE"
+DATE=$(date '+  %A, %d/%m') 
+TIME=$(date '+ %H:%M')
+# DATE=$(date '+   %d/%m')
+DATE_TIME="$DATE $TIME"
 echo $DATE_TIME
 
 case $BLOCK_BUTTON in

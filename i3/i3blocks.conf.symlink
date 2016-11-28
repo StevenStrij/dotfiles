@@ -1,9 +1,13 @@
 command=~/.i3blocks/scripts/$BLOCK_NAME
 markup=pango
-separator=false
 align=center
 
-separator_block_width=10
+full_text=〉
+align=center
+color=#666666
+separator=false
+separator_block_width=7
+
 border_top=0
 border_left=0
 border_right=0
@@ -21,9 +25,9 @@ label=
 interval=2
 border=#2D9E9E
 
-# [mem]
-# label=
-# interval=10
+[mem]
+label=
+interval=10
 
 [temperature]
 label=
@@ -62,9 +66,9 @@ interval=once
 signal=1
 border=#689d6a
 
-[battery]
-interval=10
-border=#cc231d
+# [battery]
+# interval=10
+# border=#cc231d
 
 [date]
 interval=1
