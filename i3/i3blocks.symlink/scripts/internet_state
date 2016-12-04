@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Use the provided interface, otherwise the device used for the default route.
+if [[ -n $BLOCK_INSTANCE ]]; then
+  INTERFACE=$BLOCK_INSTANCE
+else
+  INTERFACE=$(ip route | awk '/^default/ { print $5 ; exit }')
+fi
+
+# Exit if the interface doesn't exist
+[[ ! -d /sys/class/net/${IF} ]] && exit
+
+if [[ "$(cat /sys/class/net/${INTERFACE}/operstate)" = 'down' ]]; then
+  echo down
+  echo down
+  echo \#FF0000
+  exit
+fi
+
+[ -z "$IP_DIS" ] && export IP_DIS='lan'
+
+case $BLOCK_BUTTON in
+  2) echo -n "$IPADDR" | xclip -q -se c ;;
+  3) IP_DIS=$([[ "$IP_DIS" == 'lan' ]] && echo "wan" || echo "lan");;
+esac
+export IP_DIS
+
+if [[ $IP_DIS == 'lan' ]]; then
+  # Lan Address
+  ADDR=$(ifconfig ${INTERFACE} | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
+else
+  # Wan Address
+  ADDR=$(curl icanhazip.com)
+fi
+
+
+echo "$IP_DIS $ADDR"
+echo "$IP_DIS $ADDR"

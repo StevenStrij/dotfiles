@@ -20,25 +20,25 @@ interval=1
 color=#ABB59F
 border=#ebdbb2
 
-[cpu_usage]
-label=
-interval=2
-border=#2D9E9E
+# [cpu_usage]
+# label=
+# interval=2
+# border=#2D9E9E
 
-[mem]
-label=
-interval=10
+# [mem]
+# label=
+# interval=10
 
 [temperature]
 label=
 interval=10
 border=#27D39F
 
-[disk]
-label=
-instance=/home/
-interval=30
-border=#3E60AF
+# [disk]
+# label=
+# instance=/home/
+# interval=30
+# border=#3E60AF
 
 [iface]
 label=
@@ -69,6 +69,10 @@ border=#689d6a
 # [battery]
 # interval=10
 # border=#cc231d
+
+[internet_state]
+instance=enp4s0
+interval=10
 
 [date]
 interval=1
